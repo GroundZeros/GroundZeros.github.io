@@ -2,6 +2,8 @@
 title: Mysql中的B+树
 tags: Mysql B+树
 author: 糖果炒蛋
+layout: page
+  key: Mysql-b
 ---
 
 
