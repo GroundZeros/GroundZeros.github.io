@@ -24,7 +24,7 @@ page:
 
 B 树（Balance Tree）即为平衡树的意思，一个节点可以存储多个键值和数据。
 
-![5](https://raw.githubusercontent.com/GroundZeros/ImageHost/main/images/5.jpg)
+![5](https://cdn.jsdelivr.net/gh/GroundZeros/ImageHost@main/images/5.jpg)
 
 图中的 p 节点为指向子节点的指针，每个节点称为页，页就是上面说的磁盘块，在 MySQL 中数据读取的基本单位都是页，所以我们这里叫做页更符合 MySQL 中索引的底层数据结构。
 
@@ -42,7 +42,7 @@ B 树（Balance Tree）即为平衡树的意思，一个节点可以存储多个
 
 B+ 树是对 B 树的进一步优化。让我们先来看下 B+ 树的结构图：
 
-![6](https://raw.githubusercontent.com/GroundZeros/ImageHost/main/images/6.jpg)
+![6](https://cdn.jsdelivr.net/gh/GroundZeros/ImageHost@main/images/6.jpg)
 
 B树和B+树的不同：
 
@@ -90,7 +90,7 @@ B树和B+树的不同：
 
 ### **利用聚集索引查找数据**
 
-![6](https://raw.githubusercontent.com/GroundZeros/ImageHost/main/images/6.jpg)
+![6](https://cdn.jsdelivr.net/gh/GroundZeros/ImageHost@main/images/6.jpg)
 
 还是这张 B+ 树索引图，现在我们应该知道这就是聚集索引，表中的数据存储在其中。
 
@@ -130,11 +130,11 @@ select * from user where id>=18 and id <40
 
 下面看下具体的查找流程图
 
-![8](https://raw.githubusercontent.com/GroundZeros/ImageHost/main/images/8.jpg)
+![8](https://cdn.jsdelivr.net/gh/GroundZeros/ImageHost@main/images/8.jpg)
 
 ### **利用非聚集索引查找数据**
 
-![9-1024x626](https://raw.githubusercontent.com/GroundZeros/ImageHost/main/images/9-1024x626.jpg)
+![9-1024x626](https://cdn.jsdelivr.net/gh/GroundZeros/ImageHost@main/images/9-1024x626.jpg)
 
 读者看到这张图的时候可能会蒙，这是啥东西啊？怎么都是数字。如果有这种感觉，请仔细看下图中红字的解释。
 
@@ -157,7 +157,7 @@ select * from user where luckNum=33
 
 下面看下具体的查找流程图：
 
-![921](https://raw.githubusercontent.com/GroundZeros/ImageHost/main/images/921.jpg)
+![921](https://cdn.jsdelivr.net/gh/GroundZeros/ImageHost@main/images/921.jpg)
 
 在 MyISAM 中，聚集索引和非聚集索引的叶子节点都会存储数据的文件地址。
 
@@ -169,7 +169,7 @@ select * from user where luckNum=33
 
 哈希索引的示意图：
 
-![99941-20160706162359874-1132773212](https://raw.githubusercontent.com/GroundZeros/ImageHost/main/images/99941-20160706162359874-1132773212.jpg)
+![99941-20160706162359874-1132773212](https://cdn.jsdelivr.net/gh/GroundZeros/ImageHost@main/images/99941-20160706162359874-1132773212.jpg)
 
 简单地说，**哈希索引就是采用一定的哈希算法**，把键值换算成新的哈希值，检索时不需要类似B+树那样从根节点到叶子节点逐级查找，只需一次哈希算法即可立刻定位到相应的位置，速度非常快。
 
