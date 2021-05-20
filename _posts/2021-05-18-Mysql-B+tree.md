@@ -189,4 +189,4 @@ select * from user where luckNum=33
 SELECT … FROM t WHERE C1 = ?; — 仅等值查询
 ```
 
-转载自：https://www.cnblogs.com/zengkefu/p/5647279.html
+转载自：<https://www.cnblogs.com/zengkefu/p/5647279.html>
