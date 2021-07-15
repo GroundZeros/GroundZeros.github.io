@@ -11,7 +11,7 @@ WebSocket是 HTML5 开始提供的一种在单个 TCP 连接上进行全双工�
 
 使用webSocket通讯，客户端和服务端只需要一次握手建立连接，就可以互相发送消息，进行数据传输，更实时地进行通讯。
 
-浏览器先向服务器发送个url以ws://开头的http的GET请求，响应状态码101表示Switching Protocols切换协议，
+浏览器先向服务器发送个url以`ws://`开头的http的GET请求，响应状态码101表示Switching Protocols切换协议，
 
 服务器根据请求头中Upgrade:websocket把客户端的请求切换到对应的协议，即websocket协议。
 
