@@ -8,7 +8,7 @@ tags: Spring Security OAuth JWT 认证 鉴权
 
 最近有个商场项目，业务搭建的差不多了，需要一个鉴权授权框架，正好学习一下OAuth2.0，平时做项目接触搭Spring Security不算多，搭建起来配置文件有点多，记录一下搭建过程，尽量介绍每一步的目的。
 
-## 授权服务器搭建
+# 授权服务器搭建
 
 授权服务器搭主要通过继承AuthorizationServerConfigurerAdapter类来实现，该类中有三个configuration方法，分别对应：
 
@@ -36,7 +36,7 @@ public class AuthorizationService extends AuthorizationServerConfigurerAdapter {
     }
 ```
 
-### 客户端详情配置
+# 客户端详情配置
 
 ClientDetailsServiceConfigurer一般使用JDBC连接数据库，查找`oauth_client_details`表中的客户端信息，表名不可更改，相关建表语句以及字段解释网上很容易找到，不再赘述。
 
@@ -64,7 +64,7 @@ public class AuthorizationService extends AuthorizationServerConfigurerAdapter {
 
 首先配置ClientDetailsService客户端数据源，然后在ClientDetailsServiceConfigurer中把配置好的客户端客户端加入。
 
-### 令牌访问端点配置
+# 令牌访问端点配置
 
 **AuthorizationServerEndpointsConfigurer**可以完成令牌服务以及令牌endpoint配置。主要通过以下属性决定支持的**授权类型**：
 
@@ -76,7 +76,7 @@ public class AuthorizationService extends AuthorizationServerConfigurerAdapter {
 
 **这一部分配置较为复杂，本文主要使用密码授权模式。**
 
-#### UserDetailsService
+## UserDetailsService
 
 首先要实现自定义UserDetailsService，实现对客户端以及用户的身份认证。
 
@@ -146,7 +146,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 }
 ```
 
-#### AuthenticationManager
+## AuthenticationManager
 
 配置authenticationManager要实现WebSecurityConfigurerAdapter，新建类WebSecurityConfig
 
@@ -193,7 +193,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 注意：授权认证管理对象重写的是authenticationManager**Bean**()，重写authenticationManager会造成OverFlow
 
-#### JwtAccessTokenConverter与TokenStore
+## JwtAccessTokenConverter与TokenStore
 
 默认情况下,资源服务器解析后的token不会包含之前颁发时额外携带的字段信息得重写UserAuthenticationConverter自定义解析实现,将token转化为用户信息
 
@@ -340,7 +340,7 @@ public class AuthorizationService extends AuthorizationServerConfigurerAdapter {
 }
 ```
 
-### 令牌端点安全约束
+# 令牌端点安全约束
 
 这一部分较为简单，直接上代码
 
@@ -363,7 +363,7 @@ public class AuthorizationService extends AuthorizationServerConfigurerAdapter {
 }
 ```
 
-### 令牌获取测试（密码模式）
+# 令牌获取测试（密码模式）
 
 最终项目结构
 
